@@ -9,7 +9,7 @@
 
         <div id="app" v-cloak>
             <h1>Card Manager</h1>
-            <div style="text-align: center; cursor: pointer;">
+            <div :style="[textSizeControlStyle, anotherStyle]">
                 Text size <span @click="fontSize++">bigger</span> | <span @click="fontSize--">smaller</span>
             </div>
             <div :style="{'font-size': fontSize + 'px'}">
@@ -33,7 +33,12 @@
                     return {
                         cards,
                         editIndex: -1,
-                        fontSize: 15
+                        fontSize: 15,
+                        textSizeControlStyle: {
+                            textAlign: 'center',
+                            cursor: 'pointer'
+
+                        }
                     };
                 },
             };
