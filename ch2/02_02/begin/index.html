@@ -23,7 +23,7 @@
 
                 <div class="options">
                     <div>
-                        <input type="checkbox" id="reverse" value="reverse">
+                        <input v-model="reverse" true-value="on" false-value="off" type="checkbox" id="reverse" value="reverse">
                         <label for="reverse">Include reverse cards</label>
                     </div>
 
@@ -37,6 +37,9 @@
                         <label for="reminders">Enable reminders</label>
                     </div>
                 </div>
+                <div>
+                   Value of reverse:  {{ reverse }}
+                </div>
 
                 <button type="submit">Create</button>
             </form>
@@ -48,7 +51,8 @@
                 data() {
                     return {
                         deckName: 'Vue.js Fundamentals',
-                        deckDescription: 'Core concepts and directives for working with Vue.js'
+                        deckDescription: 'Core concepts and directives for working with Vue.js',
+                        reverse: false
                     };
                 }
             };
