@@ -9,7 +9,7 @@
         <div id="app">
             <h1 v-text="deckName"></h1>
 
-         <flash-card :flipped="flipped" :is-repeat="isRepeat" :front="front" :back="back"></flash-card>
+         <flash-card @flip="flipped = !flipped" :flipped="flipped" :is-repeat="isRepeat" :front="front" :back="back"></flash-card>
 
             <div class="navigation">
                 <button @click="move(-1)" type="button">&#8592;</button>
@@ -79,7 +79,7 @@
             });
 
             app.component('flash-card', {
-                template: `<div @click="flipped = !flipped" :class="{again: isRepeat}" class="card">
+                template: `<div @click="$emit('flip') :class="{again: isRepeat}" class="card">
                 <h2 v-if="!flipped" v-text="front"></h2>
                 <div v-else>
                     <div v-html="back"></div>
@@ -89,7 +89,8 @@
                     </div>
                 </div>
             </div>`,
-            props: ['flipped', 'isRepeat', 'front', 'back']
+            props: ['flipped', 'isRepeat', 'front', 'back'],
+
             }),
             app.mount('#app');
         </script>
